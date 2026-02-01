@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <title>Will you be my Valentine?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating hearts / emojis (like reference) -->
+  <div class="floating-elements" id="floatingElements" aria-hidden="true"></div>
+
+  <!-- Background music (optional) – set musicUrl in script.js -->
+  <div id="musicControls" class="music-controls" aria-label="Background music">
+    <button type="button" id="musicToggle" class="music-btn">🎵 Play Music</button>
+    <audio id="bgMusic" loop>
+      <source id="musicSource" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- PASSWORD LOCK SCREEN -->
+  <section id="screen-lock" class="screen active">
+    <div class="lock-area">
+      <p class="vintage-label">A message from your love</p>
+      <div class="envelope-wrapper">
+        <div id="envelope" class="envelope">
+          <!-- CSS-only envelope -->
+          <div class="envelope-back"></div>
+          <div class="envelope-left"></div>
+          <div class="envelope-right"></div>
+          <div class="envelope-bottom"></div>
+          <!-- Letter inside -->
+          <div class="envelope-letter">
+            <div class="letter-lines"></div>
+          </div>
+          <!-- Heart seal -->
+          <div class="envelope-seal">💌</div>
+          <!-- Triangular flap – opens on correct password -->
+          <div class="envelope-flap"></div>
+        </div>
+      </div>
+
+      <div class="letter-meta">
+        <span class="to-from">To: <em>Someone special</em></span>
+        <span class="to-from">From: <em>Your love</em></span>
+      </div>
+
+      <div class="pwd">
+        <input id="password" type="password" placeholder="Open the letter..." autocomplete="off" />
+        <button id="unlockBtn">Open</button>
+      </div>
+      <p class="hint" id="hint">Hint: I love you the ..... 😉</p>
+      <p class="error" id="error"></p>
+    </div>
+  </section>
+
+  <!-- PAGE 2: Letter card (Will you be my Valentine?) -->
+  <section id="screen-question" class="screen">
+    <div class="letter-card-page">
+      <h2 class="letter-card-title script">Will you be my Valentine?</h2>
+
+      <p class="scratch-hint">Scratch to reveal 💕</p>
+      <div class="scratch-card">
+        <div class="scratch-reveal">
+          <!-- Replace src with your own photo to reveal under the scratch -->
+          <img src="images/30104d9fb54f70218a405858a5c7c26e.jpg" alt="Reveal" />
+        </div>
+        <canvas id="scratchCanvas"></canvas>
+      </div>
+      <div class="letter-card-btns">
+        <button id="yesBtn" class="btn yes">Yes</button>
+        <button id="noBtn" class="btn no">No</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 3: How much do you love me? (love meter) -->
+  <section id="screen-love-meter" class="screen">
+    <div class="letter-card-page love-meter-page">
+      <h2 class="letter-card-title script">How much do you love me?</h2>
+      <div class="love-meter">
+        <input type="range" min="0" max="10000" value="100" class="slider" id="loveMeter" />
+        <p class="love-meter-text">
+          <span class="love-value-container">This much! (<span id="loveValue">100</span>%)</span>
+          <span id="extraLove" class="extra-love hidden"></span>
+        </p>
+      </div>
+      <button id="nextBtn" class="btn yes">Next</button>
+    </div>
+  </section>
+
+  <!-- PAGE 4: Love Letter (elegant card with romantic message) -->
+  <section id="screen-love-letter" class="screen">
+    <div class="letter-card-page love-letter-card">
+      <h2 class="letter-card-title script">A letter for you</h2>
+      <div class="love-letter-content">
+        <p class="love-letter-text">
+          Hi Babe,
+          I'm so glad you're my Valentine. I love you more than words can say.
+          I can't wait to spend the rest of my life with you.
+          I love you more than words can say.
+        </p>
+        <p class="love-letter-signature script">With all my love</p>
+      </div>
+      <button id="loveLetterNextBtn" class="btn yes">Continue</button>
+    </div>
+  </section>
+
+  <!-- PAGE 5: Happy Valentine's Day (photo + paragraph) -->
+  <section id="screen-yes" class="screen">
+    <div class="screen-content screen-yes-content">
+      <h1 class="title script">Happy Valentine's Day</h1>
+      <div class="card big vintage-card">
+        <div class="us-photo">
+          <img src="images/09556ed9bb4a28633c535c3113f9c89d.jpg" alt="Us" />
+        </div>
+        <p class="love-note" id="loveNote">
+          You're the best thing that ever happened to me. and i know we havent having the best time recently but
+          I want you to know that whatever comes our way , I am committed to us and to making our relationship stronger.
+          I can't wait to spend this Valentine's Day with you and create memorable memories together.
+          Happy Valentine's Day, my love. 💗
+        </p>
+        <p class="date-line">02 / 14</p>
+        <button id="restartBtn" class="btn ghost">Read again</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
